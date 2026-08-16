@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Jurnal MPLS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary: #4F46E5;
+            --secondary: #818CF8;
+            --bg-color: #F3F4F6;
+            --text-dark: #1F2937;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        /* Animated Background Shapes */
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
+            animation: float 8s infinite alternate ease-in-out;
+        }
+
+        .shape1 {
+            width: 400px;
+            height: 400px;
+            background-color: rgba(79, 70, 229, 0.4); /* Primary color with opacity */
+            top: -100px;
+            left: -100px;
+        }
+
+        .shape2 {
+            width: 300px;
+            height: 300px;
+            background-color: rgba(129, 140, 248, 0.4); /* Secondary color with opacity */
+            bottom: -50px;
+            right: -50px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(30px) scale(1.1); }
+        }
+
+        /* Glassmorphism Profile Card */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: slideUp 0.8s forwards ease-out;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Profile Image */
+        .profile-img-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+            transition: transform 0.4s ease;
+        }
+
+        .profile-img-container:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .typewriter-text {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            min-height: 25px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Info Grid (Kelas, Absen, Tanggal Lahir) */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            background: var(--white);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            font-size: 0.85rem;
+        }
+
+        .info-item span {
+            display: block;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        /* About Me Paragraph */
+        .about-me {
+            font-size: 0.95rem;
+            color: #4B5563;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        /* CTA Button */
+        .btn-jurnal {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-jurnal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-jurnal::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-jurnal:hover::after {
+            left: 100%;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 480px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .profile-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Animasi -->
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+
+    <!-- Main Card -->
+    <div class="profile-card">
+        <!-- Ganti src dengan link atau nama file foto kamu -->
+        <div class="profile-img-container">
+            <img src="bola.jpg" alt="Foto Profil" class="profile-img">
+        </div>
+
+        <h1>Muhammad Rico Alfarizky Janeeta</h1>
+        <div class="typewriter-text" id="typewriter"></div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                Kelas
+                <!-- Silakan ubah X-1 sesuai dengan kelas/gugus kamu -->
+                <span>X-A</span> 
+            </div>
+            <div class="info-item">
+                No. Absen
+                <!-- Silakan ubah nomor absen kamu -->
+                <span>14</span> 
+            </div>
+            <div class="info-item">
+                Tgl Lahir
+                <!-- Silakan ubah tanggal lahir kamu -->
+                <span>17/07/2011</span> 
+            </div>
+        </div>
+
+        <p class="about-me">
+            Salam kenal! Saya adalah siswa SNT. Kali ini saya akan membagikan pengalaman saya selama mengikuti kegiatan MPLS. Semoga jurnal ini bisa memberikan gambaran yang jelas tentang perjalanan saya dan teman-teman selama kegiatan tersebut. Terima kasih telah berkunjung!
+        </p>
+
+        <!-- Tombol mengarah ke file jurnal (pastikan nama file jurnalnya jurnal.html) -->
+        <a href="ppp.html" class="btn-jurnal">Lihat Jurnal MPLS SAYA! ➔</a>
+    </div>
+
+    <!-- JavaScript Interaktif (Efek Mengetik Otomatis) -->
+    <script>
+        const textArray = ["Siswa SNT", "Coding Enthusiast", "Guitar Player", "Likes jogging and playing football"];
+        const typingDelay = 100;
+        const erasingDelay = 50;
+        const newTextDelay = 2000;
+        let textArrayIndex = 0;
+        let charIndex = 0;
+
+        const typedTextSpan = document.getElementById("typewriter");
+
+        function type() {
+            if (charIndex < textArray[textArrayIndex].length) {
+                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } else {
+                setTimeout(erase, newTextDelay);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } else {
+                textArrayIndex++;
+                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+                setTimeout(type, typingDelay + 1100);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(type, newTextDelay + 250);
+        });
+    </script>
+</body>
+</html>

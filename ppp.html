@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurnal MPLS 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary: #4F46E5;
+            --secondary: #818CF8;
+            --bg-color: #F3F4F6;
+            --text-dark: #1F2937;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            background-color: var(--white);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            background-color: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Content Card Styling */
+        .day-content {
+            display: none;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .day-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .day-header {
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            color: var(--primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Photo Grid Styling */
+        .photo-gallery {
+            display: grid;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .photo-card {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: scale(1.03);
+        }
+
+        /* =========================================
+           MEDIA QUERIES (Responsive Design)
+           ========================================= */
+
+        /* 1. Mobile (HP) - Default view is mobile-first */
+        .photo-gallery {
+            grid-template-columns: 1fr;
+        }
+
+        /* 2. Tablet & iPad Portrait (min-width: 600px) */
+        @media screen and (min-width: 600px) {
+            .photo-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .photo-card:nth-child(3) {
+                grid-column: span 2;
+            }
+        }
+
+        /* 3. iPad Landscape & Laptop (min-width: 900px) */
+        @media screen and (min-width: 900px) {
+            .photo-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .photo-card:nth-child(3) {
+                grid-column: span 1;
+            }
+            .day-content {
+                padding: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Capture.PNG" style="width: 100px; height: auto; margin-bottom: 1rem;">
+        <h1>Jurnal MPLS 2026</h1>
+        <p>Catatan Perjalanan 5 Hari Masa Pengenalan Lingkungan Sekolah</p>
+    </header>
+
+    <div class="container">
+        <!-- Tab Buttons -->
+        <div class="tabs">
+            <button class="tab-btn active" data-target="hari1">Hari 1</button>
+            <button class="tab-btn" data-target="hari2">Hari 2</button>
+            <button class="tab-btn" data-target="hari3">Hari 3</button>
+            <button class="tab-btn" data-target="hari4">Hari 4</button>
+            <button class="tab-btn" data-target="hari5">Hari 5</button>
+        </div>
+
+        <!-- Content Hari 1 -->
+        <div id="hari1" class="day-content active">
+            <div class="day-header">
+                <h2>Senin, 10 Agustus 2026</h2>
+            </div>
+            
+            <h3 class="section-title">📌 Kegiatan yang Dilakukan</h3>
+            <ul>
+                <li>Upacara pembukaan MPLS dan penyematan tanda peserta secara simbolis.</li>
+                <li>Dihadiri Menteri Pendidikan Dasar Dan Menengah serta Pejabat Negara lainnya</li>
+                <li>Mencoba metode belajar baru menggunakan PID, Laptop dan website</li>
+            </ul>
+
+            <h3 class="section-title">✨ Kesan & Momen Seru</h3>
+            <p>Seneng banget bisa jadi petugas upacara pembukaan MPLS SNT 07 Bogor. Bertemu dengan Pak Menteri, Abdul Mu'ti, Serta mengikuti acara pembukaan MPLS SNT 07 Bogor bersama pejabat lainnya</p>
+
+            <h3 class="section-title">📸 Dokumentasi</h3>
+            <div class="photo-gallery">
+                <img src="upacara.jpg" alt="Dokumentasi Hari 1 - 1" class="photo-card">
+                <img src="daysatu.jpg" alt="Dokumentasi Hari 1 - 2" class="photo-card">
+                <img src="day1.jpg" alt="Dokumentasi Hari 1 - 3" class="photo-card">
+            </div>
+        </div>
+
+        <!-- Content Hari 2 -->
+        <div id="hari2" class="day-content">
+            <div class="day-header">
+                <h2>Selasa, 11 Agustus 2026</h2>
+            </div>
+            
+            <h3 class="section-title">📌 Kegiatan yang Dilakukan</h3>
+            <ul>
+                <li>Masuk kelas dan diberikan tata cara menghitung denyut nadi</li>
+                <li>Menuju ke lapangan Voli untuk melakukan Senam pagi bersama</li>
+                <li>Menghitung denyut nadi selama 15 detik setelah selesai senam</li>
+            </ul>
+
+            <h3 class="section-title">✨ Kesan & Momen Seru</h3>
+            <p>Seneng banget,bisa senam bersama dengan gembira dan suka cita. Setelah itu menghitung denyut nadi kita selama 15 detik.</p>
+
+            <h3 class="section-title">📸 Dokumentasi</h3>
+            <div class="photo-gallery">
+                <img src="senam.PNG" alt="Dokumentasi Hari 3 - 1" class="photo-card">
+            
+                
+            </div>
+
+        </div>
+
+        <!-- Content Hari 3 -->
+        <div id="hari3" class="day-content">
+            <div class="day-header">
+                <h2>Rabu, 12 Agustus 2026</h2>
+            </div>
+            
+            <h3 class="section-title">📌 Kegiatan yang Dilakukan</h3>
+            <ul>
+                <li>Berbaris rapi dan menuju ke lapangan untuk melakukan kegiatan Apel pagi</li>
+                <li>Menuju ke lapangan futsal dan badminton untuk berolahraga</li>
+                <li>Presentasi minat dan bakat siswa</li>
+            </ul>
+
+            <h3 class="section-title">✨ Kesan & Momen Seru</h3>
+            <p>Hari ini seru banget nget nget....Karena hari ini, saya bisa merasakan rasanya bermain bola di lapangan futsal, dan bermain dengan anak anak yang lain.</p>
+
+            <h3 class="section-title">📸 Dokumentasi</h3>
+            <div class="photo-gallery">
+                <img src="snt.jpg" alt="Dokumentasi Hari 3 - 1" class="photo-card">
+                <img src="bola.jpg" alt="Dokumentasi Hari 3 - 2" class="photo-card">
+                <img src="presentasi.PNG" alt="Dokumentasi Hari 3 - 3" class="photo-card">
+            </div>
+        </div>
+
+        <!-- Content Hari 4 -->
+        <div id="hari4" class="day-content">
+            <div class="day-header">
+                <h2>Kamis, 13 Agustus 2026</h2>
+            </div>
+            
+            <h3 class="section-title">📌 Kegiatan yang Dilakukan</h3>
+            <ul>
+                <li>Good Vibes, Good Deeds</li>
+                <li>Bermain Treasure hunt, mencari kertas tersembunyi yang harus ditemukan (Good Vibes)</li>
+                <li>Membagikan barang kepada warga SNT dengan tulus dan ikhlas (Good Deeds)</li>
+            </ul>
+
+            <h3 class="section-title">✨ Kesan & Momen Seru</h3>
+            <p>SERUU BANGETT AOKWOAKWOKAO...Mencari treasure dan berbagi ke warga SNT. Pelajaran yang saya dapat adalah "Saya belajar untuk lebih peduli dan mau berbagi dengan orang lain. Meskipun sederhana, dapat membantu dan memberikan manfaat.".</p>
+
+            <h3 class="section-title">📸 Dokumentasi</h3>
+            <div class="photo-gallery">
+                <img src="dok.jpg" alt="Dokumentasi Hari 4 - 1" class="photo-card">
+                <img src="vibes.PNG" alt="Dokumentasi Hari 4 - 2" class="photo-card">
+                <img src="deeds.PNG" alt="Dokumentasi Hari 4 - 3" class="photo-card">
+            </div>
+        </div>
+
+        <!-- Content Hari 5 -->
+        <div id="hari5" class="day-content">
+            <div class="day-header">
+                <h2>Jumat, 14 Agustus 2026</h2>
+            </div>
+            
+            <h3 class="section-title">📌 Kegiatan yang Dilakukan</h3>
+            <ul>
+                <li>Lomba Si buta dan Si tuli, Bola keranjang, dan Berurutan angka</li>
+                <li>Unjuk Karya : SNT Got Talent setiap kelompok</li>
+                <li>Penutupan MPLS</li>
+            </ul>
+
+            <h3 class="section-title">✨ Kesan & Momen Seru</h3>
+            <p>
+                Gak kerasa udh last day MPLS. Seru bangetttt, bisa ikut lomba dan unjuk karya. Saya senang bisa menampilkan karya bermain gitar saya di depan teman teman dan guru guru SNT. Saya juga senang bisa melihat teman teman lain menampilkan karya mereka.
+            </p>
+
+            <h3 class="section-title">📸 Dokumentasi</h3>
+            <div class="photo-gallery">
+                <img src="lomba.jpg" alt="Dokumentasi Hari 5 - 1" class="photo-card">
+                <img src="last.jpg" alt="Dokumentasi Hari 5 - 2" class="photo-card">
+                <img src="gitar.PNG" alt="Dokumentasi Hari 5 - 3" class="photo-card">
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JavaScript Interaktif -->
+    <script>
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const dayContents = document.querySelectorAll('.day-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Menghapus class active
+                tabBtns.forEach(b => b.classList.remove('active'));
+                dayContents.forEach(content => content.classList.remove('active'));
+
+                // Menambahkan class active pada tombol yang diklik
+                btn.classList.add('active');
+
+                // Menampilkan konten yang dituju
+                const targetId = btn.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
